@@ -1,0 +1,19 @@
+{
+  "name": "fipe-table-select",
+  "version": "1.0.0",
+  "description": "A plugin to implement the Brazilian FIPE table in any web page.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinchevallier/Fipe-Table-Select.git"
+  },
+  "author": "kevinchevallier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinchevallier/Fipe-Table-Select/issues"
+  },
+  "homepage": "https://github.com/kevinchevallier/Fipe-Table-Select#readme"
+}

@@ -1,0 +1,33 @@
+doctype html
+html(lang="en")
+    head
+        title Fipe Table Select
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(href='main.css', rel='stylesheet')
+    body
+        h1 Fipe-Table Select
+        fieldset
+            legend Selecionar tipo:
+
+            select(name="fts-select-type" id="fts-select-type")
+                option(value="") Selecionar…
+                option(value="carros") Carros
+                option(value="motos") Motos
+                option(value="caminhoes") Caminhoes
+
+            select(name="fts-select-brand" id="fts-select-brand")
+                option(value="") Selecionar…
+
+            select(name="fts-select-model" id="fts-select-model")
+                option(value="") Selecionar…
+
+            select(name="fts-select-years" id="fts-select-years")
+                option(value="") Selecionar…
+
+            #fts-model-data
+
+
+
+    script(src="jquery-2.2.1.min.js")
+    script(src="app.js")
