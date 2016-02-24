@@ -50,4 +50,3 @@ The goal is to get a plugin that will allow users to do the following operations
 + Include tests
 + Styled demos
 + All-in-one element
-+ Text input for manual search
