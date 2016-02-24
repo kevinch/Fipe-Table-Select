@@ -2,7 +2,7 @@
 
 **_work in progress_**
 
-A plugin to implement the brazilian **FIPE table** [veiculos.fipe.org.br](http://veiculos.fipe.org.br/)  in any web page. 
+A plugin to implement the brazilian **FIPE table** [veiculos.fipe.org.br](http://veiculos.fipe.org.br/)  in any web page.
 
 The plugin will use the api available at [fipeapi.appspot.com](http://fipeapi.appspot.com/) which returns json files based on parameters passed to the url.
 
@@ -23,12 +23,14 @@ The goal is to get a plugin that will allow users to do the following operations
 + Any step edition
 + Responsive
 
-##Tech
-+ Harpjs 
-+ Jade
-+ Stylus
-+ jQuery/vanillaJs ?
-+ Tests (which type?)
+##Development
++ [Harpjs](http://harpjs.com/) as a local server and to compile
++ [Jade](http://jade-lang.com/) for the html
++ [Stylus](http://stylus-lang.com/) for the css
++ [jQuery](https://jquery.com/) (vanillajs on its way)
++ Tests (incoming)
 
 ##How to use
-_later_
+**Development** files are in the `app` folder
+
+**Production** files are in the `app/www` folder
