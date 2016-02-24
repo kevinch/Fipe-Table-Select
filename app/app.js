@@ -80,7 +80,7 @@ namespace.subnamespace = namespace.subnamespace || {};
             });
         }
 
-        function publicMethod () {
+        function selectsActions () {
 
             $fts_select_type.on('change', function() {
                 // get selected type
@@ -120,7 +120,7 @@ namespace.subnamespace = namespace.subnamespace || {};
         }
 
         function init () {
-            publicMethod();
+            selectsActions();
         }
 
         return {

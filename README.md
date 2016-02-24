@@ -16,12 +16,10 @@ The goal is to get a plugin that will allow users to do the following operations
 4. Select a vehicle year based on step 3.
 5. Save/Send the data retrieved for further use.
 
-##Features
-+ Display brand logo (if available)
-+ Single select element (if possible in an easy way)
-+ Text input for manual search
-+ Any step edition
-+ Responsive
+##Demos
++ Barebone
++ Styled with brands logos
++ Styled single element with logos and search input
 
 ##Development
 + [Harpjs](http://harpjs.com/) as a local server and to compile
@@ -33,4 +31,23 @@ The goal is to get a plugin that will allow users to do the following operations
 ##How to use
 **Development** files are in the `app` folder
 
+1. In terminal, run `harp server` at root
+2. Open `http://localhost:9000/app/` in browser
+3. In terminal, run `harp compile` in `app` folder to compile the project
+
 **Production** files are in the `app/www` folder
+
+1. Html in `index.html`
+2. Javascript in `app.js` (add jQuery if needed)
+3. Css in `main.css`
+
+##Roadmap
+
++ Test bikes type
++ Test trucks type
++ Allow edition
++ Vanilla Js version
++ Include tests
++ Styled demos
++ All-in-one element
++ Text input for manual search
