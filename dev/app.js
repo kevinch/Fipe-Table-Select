@@ -1,4 +1,3 @@
-/*global window, document, jQuery, namespace, subnamespace*/
 window.namespace = window.namespace || {};
 namespace.subnamespace = namespace.subnamespace || {};
 
@@ -11,66 +10,59 @@ namespace.subnamespace = namespace.subnamespace || {};
             vehicle_model_key,
             vehicle_model_year;
 
-        // function getBrands (type) {
-        //     var jqxhr = $.getJSON( "http://fipeapi.appspot.com/api/1/carros/marcas.json", function(data) {
-        //         console.log( "success" );
-        //         return data;
-        //     })
-        //     .done(function() {
-        //         console.log( "done" );
-        //     })
-        //     .fail(function() {
-        //         console.log( "error" );
-        //     })
-        //     .always(function() {
-        //         console.log( "complete" );
-        //     });
-        // }
+        var $fts_select_type  = $('#fts-select-type'),
+            $fts_select_brand = $('#fts-select-brand'),
+            $fts_select_model = $('#fts-select-model'),
+            $fts_select_years = $('#fts-select-years'),
+            $fts_model_data   = $('#fts-model-data');
+
+        var fipe_api_base_url = "http://fipeapi.appspot.com/api/1/";
 
         function publicMethod () {
-            $('#fts-select-type').on('change', function() {
+            $fts_select_type.on('change', function() {
                 vehicle_type = $(this).val();
                 console.log('Vehicle type: '+vehicle_type);
 
-                var firstPromise = $.get("http://fipeapi.appspot.com/api/1/"+vehicle_type+"/marcas.json");
+                var firstPromise = $.get(fipe_api_base_url+vehicle_type+"/marcas.json");
                 $.when(firstPromise).done(function(firstData) {
+                    // console.log(firstData);
                     firstData.forEach(function(item) {
-                        $('#fts-select-brand').append('<option value="'+item.id+'">'+item.fipe_name+'</option>');
+                        $fts_select_brand.append('<option value="'+item.id+'">'+item.fipe_name+'</option>');
                     });
                 });
             });
 
-            $('#fts-select-brand').on('change', function() {
+            $fts_select_brand.on('change', function() {
                 vehicle_brand_id = $(this).val();
                 console.log('Vehicle brand id: '+vehicle_brand_id);
 
-                var secondPromise = $.get("http://fipeapi.appspot.com/api/1/"+vehicle_type+"/veiculos/"+vehicle_brand_id+".json");
+                var secondPromise = $.get(fipe_api_base_url+vehicle_type+"/veiculos/"+vehicle_brand_id+".json");
                 $.when(secondPromise).done(function(secondData) {
                     // console.log(secondData);
                     secondData.forEach(function(item) {
-                        $('#fts-select-model').append('<option value="'+item.id+'">'+item.fipe_name+'</option>');
+                        $fts_select_model.append('<option value="'+item.id+'">'+item.fipe_name+'</option>');
                     });
                 });
             });
 
-            $('#fts-select-model').on('change', function() {
+            $fts_select_model.on('change', function() {
                 vehicle_model_key = $(this).val();
                 console.log('Vehicle model key: '+vehicle_model_key);
 
-                var thirdPromise = $.get("http://fipeapi.appspot.com/api/1/"+vehicle_type+"/veiculo/"+vehicle_brand_id+"/"+vehicle_model_key+".json");
+                var thirdPromise = $.get(fipe_api_base_url+vehicle_type+"/veiculo/"+vehicle_brand_id+"/"+vehicle_model_key+".json");
                 $.when(thirdPromise).done(function(thirdData) {
                     // console.log(thirdData);
                     thirdData.forEach(function(item) {
-                        $('#fts-select-years').append('<option value="'+item.key+'">'+item.name+'</option>');
+                        $fts_select_years.append('<option value="'+item.key+'">'+item.name+'</option>');
                     });
                 });
             });
 
-            $('#fts-select-years').on('change', function() {
+            $fts_select_years.on('change', function() {
                 vehicle_model_year = $(this).val();
                 console.log('Vehicle model year: '+vehicle_model_year);
 
-                var fourthPromise = $.get("http://fipeapi.appspot.com/api/1/"+vehicle_type+"/veiculo/"+vehicle_brand_id+"/"+vehicle_model_key+"/"+vehicle_model_year+".json");
+                var fourthPromise = $.get(fipe_api_base_url+vehicle_type+"/veiculo/"+vehicle_brand_id+"/"+vehicle_model_key+"/"+vehicle_model_year+".json");
                 $.when(fourthPromise).done(function(fourthData) {
                     // console.log(fourthData);
                     for (var key in fourthData) {
@@ -88,7 +80,6 @@ namespace.subnamespace = namespace.subnamespace || {};
         }
 
         return {
-            //publicMethod : publicMethod,
             init: init
         };
     };
