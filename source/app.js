@@ -8,7 +8,8 @@ namespace.subnamespace = namespace.subnamespace || {};
         var vehicle_type,
             vehicle_brand_id,
             vehicle_model_key,
-            vehicle_model_year;
+            vehicle_model_year,
+            itemsProcessed;
 
         var $fts_select_type  = $('#fts-select-type'),
             $fts_select_brand = $('#fts-select-brand'),
@@ -26,9 +27,14 @@ namespace.subnamespace = namespace.subnamespace || {};
                 var firstPromise = $.get(fipe_api_base_url+vehicle_type+"/marcas.json");
                 $.when(firstPromise).done(function(firstData) {
                     // console.log(firstData);
+                    itemsProcessed = 0;
                     firstData.forEach(function(item) {
                         $fts_select_brand.append('<option value="'+item.id+'">'+item.fipe_name+'</option>');
+                        itemsProcessed++;
                     });
+                     if(itemsProcessed === firstData.length) {
+                        $fts_select_brand.prop("disabled", false);
+                    }
                 });
             });
 
@@ -39,9 +45,14 @@ namespace.subnamespace = namespace.subnamespace || {};
                 var secondPromise = $.get(fipe_api_base_url+vehicle_type+"/veiculos/"+vehicle_brand_id+".json");
                 $.when(secondPromise).done(function(secondData) {
                     // console.log(secondData);
+                    itemsProcessed = 0;
                     secondData.forEach(function(item) {
                         $fts_select_model.append('<option value="'+item.id+'">'+item.fipe_name+'</option>');
+                        itemsProcessed++;
                     });
+                    if(itemsProcessed === secondData.length) {
+                        $fts_select_model.prop("disabled", false);
+                    }
                 });
             });
 
@@ -52,9 +63,14 @@ namespace.subnamespace = namespace.subnamespace || {};
                 var thirdPromise = $.get(fipe_api_base_url+vehicle_type+"/veiculo/"+vehicle_brand_id+"/"+vehicle_model_key+".json");
                 $.when(thirdPromise).done(function(thirdData) {
                     // console.log(thirdData);
+                    itemsProcessed = 0;
                     thirdData.forEach(function(item) {
                         $fts_select_years.append('<option value="'+item.key+'">'+item.name+'</option>');
+                        itemsProcessed++;
                     });
+                    if(itemsProcessed === thirdData.length) {
+                        $fts_select_years.prop("disabled", false);
+                    }
                 });
             });
 
